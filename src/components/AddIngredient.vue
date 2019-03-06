@@ -36,8 +36,8 @@
                 sm4
                 md4
             >
-                <v-btn  @click="add" class="blue">
-                    Add
+                <v-btn  @click="add" class="blue white--text">
+                    <v-icon>add</v-icon>
                 </v-btn>    
             </v-flex>
 
@@ -60,6 +60,9 @@
                     name: this.new_ingredient_name, 
                     category: this.new_ingredient_category
                 })
+
+                this.new_ingredient_name = ''
+                this.new_ingredient_category = ''
             }
         },
         computed: {

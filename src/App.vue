@@ -23,27 +23,48 @@
   </v-app>
   -->
   <div>
+    <StatusBar/>
     <AddIngredient/>
-    <ExistingIngredients/>  
+      <div id="ingredient-viewer">
+        <ActiveIngredientDisplay/>
+        <ExistingIngredients/>
+      </div>
   </div>
 </template>
 
+<style>
+  #ingredient-viewer{
+    width: 500px;
+    margin: auto;
+  }
+</style>
+
 <script>
 import HelloWorld from './components/HelloWorld'
+import StatusBar from './components/StatusBar'
 import ExistingIngredients from './components/ExistingIngredients'
 import AddIngredient from './components/AddIngredient'
+import ActiveIngredientDisplay from './components/ActiveIngredientDisplay'
+
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
+    StatusBar,
     ExistingIngredients,
-    AddIngredient
-  },
-  data () {
-    return {
-      //
-    }
+    AddIngredient,
+    ActiveIngredientDisplay
   }
 }
 </script>
+
+<style>
+  * {
+    font-family: 'Montserrat', sans-serif;
+  }/*
+  .centered-layout {
+        width: 500px;
+        margin: auto;
+    }*/
+</style>
