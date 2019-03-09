@@ -7,8 +7,11 @@
         </div>
 
         <div v-if="!loadingIngredient && selectedObj">        
-            <h3>{{ selectedObj.name }}</h3>
-            <i>{{ selectedObj.category }}</i>
+            <h3>{{ selectedObj.name }} <small>{{ selectedObj.category }}</small></h3>
+
+            <div v-if="selectedObj.description">
+                <p>{{ selectedObj.description }}</p>
+            </div>
         </div>
                 
     </v-card>
@@ -23,8 +26,9 @@
         color: #444444;
         font-size: 30px;
     }
-    #active-ingredient-display i {
-        color: #616161;
+    h3 > small {
+        color: #adadad;
+        font-size: 17px;
     }
 </style>
 
