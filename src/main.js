@@ -102,7 +102,10 @@ const store = new Vuex.Store({
                 let result = await axios.post( 'http://localhost:3000/ingredients/add',
                 {
                     name: newIngredientAttributes.name,
-                    category: newIngredientAttributes.category
+                    category: newIngredientAttributes.category,
+                    description: newIngredientAttributes.desc,
+                    created_by: 'vpauley', // < its just me for now :)
+                    last_modified_by: 'vpauley'
                 })
 
                 if( result.status !== 200 || typeof result.data !== 'object' ) {
