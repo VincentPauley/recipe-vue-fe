@@ -29,7 +29,8 @@ const store = new Vuex.Store({
         active_ingredient: { 
             is_loading: false,
             content: null
-        }
+        },
+        distinct_categories: null
     },
     mutations: {
         active_ingredient_loading( state ) {
@@ -68,6 +69,10 @@ const store = new Vuex.Store({
             })
 
             state.existing_ingredients = edited_list
+        },
+        set_distinct_categories( state, categoryList ) {
+
+            state.distinct_categories = categoryList
         }
     },
     actions: {
@@ -92,6 +97,24 @@ const store = new Vuex.Store({
             } finally {
 
                 commit('active_ingredient_loading')
+            }
+        },
+        get_known_categories: async function({ commit }) {
+
+            try {
+
+                let result = await axios.get( 'http://localhost:3000/ingredients/distinct_categories' )
+
+                if( result.status !== 200 || typeof result.data !== 'object' ) {
+                    throw new Error( JSON.stringify(result) )
+                }
+
+                commit('set_distinct_categories', result.data )
+
+            } catch( e ) {
+
+                console.log( 'ERROR - Categories' );
+                console.log( e );
             }
         },
         add_ingredient: async function({ commit }, newIngredientAttributes) {

@@ -9,7 +9,7 @@
         <div v-if="!loadingIngredient && selectedObj">        
             <h3>{{ selectedObj.name }} <small>{{ selectedObj.category }}</small></h3>
 
-            <div v-if="selectedObj.description">
+            <div id="item-description" v-if="selectedObj.description">
                 <p>{{ selectedObj.description }}</p>
             </div>
         </div>
@@ -29,6 +29,9 @@
     h3 > small {
         color: #adadad;
         font-size: 17px;
+    }
+    #active-ingredient-display #item-description {
+        padding-top: 10px;
     }
 </style>
 
